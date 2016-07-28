@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="copyright">©2016 zhikaizhang.cn</string>
+    <string name="app_name">黑白棋大师</string>
+    <string name="game_rule">1. 黑白棋的游戏过程是相互翻转对方的棋子，最后以棋盘上谁的棋子多来判断胜负。\n2. 游戏棋盘大小是8*8，初始状态是两枚白子和两枚黑子交叉于棋盘中央。\n3. 轮到某一方的回合时，落子的位置必须能够与己方棋子一起将敌方棋子夹住，可以是横、竖或斜向。\n4. 当轮到某方但无子可下时由对方继续走。有子可下时不能不下。\n5. 当双方均无处可落子时游戏结束，拥有棋子多者获胜。</string>
+
+</resources>

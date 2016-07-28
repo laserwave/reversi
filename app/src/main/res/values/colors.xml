@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="WHITE">#ffffff</color>
+    <color name="BLACK">#000000</color>
+    <color name="buttonNormalBlue">#59c6ff</color>
+    <color name="buttonFocusedBlue">#89d7ff</color>
+
+    <color name="buttonNormalRed">#db414a</color>
+    <color name="buttonFocusedRed">#cd0b17</color>
+
+    <color name="transparent_background">#ffffffff</color>
+</resources>
