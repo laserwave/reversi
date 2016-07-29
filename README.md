@@ -17,7 +17,7 @@
 5. 当双方均无处可落子时游戏结束，拥有棋子多者获胜。
 
 游戏截图
-============
+==========
 
 ![1](https://github.com/laserwave/Reversi/blob/master/images/1.png)
 ![2](https://github.com/laserwave/Reversi/blob/master/images/2.png)
@@ -26,15 +26,15 @@
 
 
 Author
-============
+=========
 
  * ZhikaiZhang 
  * Email <zhangzhikai@seu.edu.cn>
  * Blog <http://zhikaizhang.cn>
- * [android黑白棋游戏实现](http://zhikaizhang.cn/2016/07/28/android黑白棋游戏实现/)
+ * [android黑白棋游戏实现](http://zhikaizhang.cn/2016/07/29/android%E9%BB%91%E7%99%BD%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%AE%9E%E7%8E%B0/)
  
- License
-=======
+License
+==========
 
     Copyright 2016 ZhikaiZhang 
 
