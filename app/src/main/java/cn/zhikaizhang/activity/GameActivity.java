@@ -1,6 +1,7 @@
 package cn.zhikaizhang.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,15 +19,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import cn.zhikaizhang.game.Algorithm;
 import cn.zhikaizhang.bean.Move;
-import cn.zhikaizhang.game.Rule;
 import cn.zhikaizhang.bean.Statistic;
-import cn.zhikaizhang.reversi.R;
+import cn.zhikaizhang.game.Algorithm;
 import cn.zhikaizhang.game.Constant;
+import cn.zhikaizhang.game.ReversiView;
+import cn.zhikaizhang.game.Rule;
+import cn.zhikaizhang.reversi.R;
 import cn.zhikaizhang.widget.MessageDialog;
 import cn.zhikaizhang.widget.NewGameDialog;
-import cn.zhikaizhang.game.ReversiView;
 
 public class GameActivity extends Activity {
 
@@ -155,6 +156,11 @@ public class GameActivity extends Activity {
                         playerColor = dialog.getPlayerColor();
                         aiColor = (byte) -playerColor;
                         difficulty = dialog.getDifficulty();
+
+                        getSharedPreferences("historyChoice", Context.MODE_PRIVATE).edit()
+                                .putBoolean("role", playerColor == Constant.BLACK)
+                                .putInt("level", difficulty-1)
+                                .apply();
 
                         nameOfAI.setText(NAME_OF_AI[difficulty - 1]);
 

@@ -2,6 +2,7 @@ package cn.zhikaizhang.widget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +19,7 @@ import cn.zhikaizhang.game.Constant;
  */
 public class NewGameDialog extends Dialog {
 
-    private RadioButton black;
+    private RadioButton black, white;
     private final RadioButton[] radioButtons = new RadioButton[8];
     private Button ok;
 
@@ -27,11 +28,18 @@ public class NewGameDialog extends Dialog {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        final SharedPreferences historyChoice = context.getSharedPreferences("historyChoice", Context.MODE_PRIVATE);
+        final boolean isBlack = historyChoice.getBoolean("role", true);
+        final int lastLevel = historyChoice.getInt("level", 0);
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.new_game_dialog, null);
 
         black = (RadioButton)view.findViewById(R.id.black);
-        black.setChecked(true);
+        white = (RadioButton)view.findViewById(R.id.white);
+        if (isBlack)
+            black.setChecked(true);
+        else
+            white.setChecked(true);
 
         radioButtons[0] = (RadioButton)view.findViewById(R.id.level1);
         radioButtons[1] = (RadioButton)view.findViewById(R.id.level2);
@@ -56,7 +64,7 @@ public class NewGameDialog extends Dialog {
                 }
             });
         }
-        radioButtons[0].setChecked(true);
+        radioButtons[lastLevel].setChecked(true);
         ok = (Button)view.findViewById(R.id.ok);
         super.setContentView(view);
     }
