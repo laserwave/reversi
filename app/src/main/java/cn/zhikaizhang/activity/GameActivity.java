@@ -228,7 +228,7 @@ public class GameActivity extends Activity {
 
         public void run() {
             try {
-                sleep(20 * 100);
+                sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

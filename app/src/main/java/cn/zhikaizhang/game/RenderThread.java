@@ -39,8 +39,8 @@ public class RenderThread extends Thread {
 					}
 				}
 				try{
-					if((endTime - startTime) <= 100){
-						sleep(100 - (endTime - startTime));
+					if((endTime - startTime) <= 50){
+						sleep(50 - (endTime - startTime));
 					}
 					
 				}catch(InterruptedException e){
