@@ -1,7 +1,6 @@
 package cn.zhikaizhang.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +26,6 @@ import cn.zhikaizhang.game.ReversiView;
 import cn.zhikaizhang.game.Rule;
 import cn.zhikaizhang.reversi.R;
 import cn.zhikaizhang.widget.MessageDialog;
-import cn.zhikaizhang.widget.NewGameDialog;
 
 public class GameActivity extends Activity {
 
@@ -64,7 +62,6 @@ public class GameActivity extends Activity {
     private static final String MULTIPLY = " × ";
     private static final String NAME_OF_AI[] = new String[]{"菜鸟", "新手", "入门", "棋手", "棋士", "大师", "宗师", "棋圣"};
 
-    private NewGameDialog dialog;
     private MessageDialog msgDialog;
 
     @Override
@@ -149,36 +146,17 @@ public class GameActivity extends Activity {
         newGame.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new NewGameDialog(GameActivity.this);
-                dialog.setOnStartNewGameListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        playerColor = dialog.getPlayerColor();
-                        aiColor = (byte) -playerColor;
-                        difficulty = dialog.getDifficulty();
-
-                        getSharedPreferences("historyChoice", Context.MODE_PRIVATE).edit()
-                                .putBoolean("role", playerColor == Constant.BLACK)
-                                .putInt("level", difficulty-1)
-                                .apply();
-
-                        nameOfAI.setText(NAME_OF_AI[difficulty - 1]);
-
-                        initialChessboard();
-                        if(playerColor == BLACK){
-                            playerImage.setImageResource(R.drawable.black1);
-                            aiImage.setImageResource(R.drawable.white1);
-                            playerTurn();
-                        }else{
-                            playerImage.setImageResource(R.drawable.white1);
-                            aiImage.setImageResource(R.drawable.black1);
-                            aiTurn();
-                        }
-                        reversiView.initialChessBoard();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
+                initialChessboard();
+                if(playerColor == BLACK){
+                    playerImage.setImageResource(R.drawable.black1);
+                    aiImage.setImageResource(R.drawable.white1);
+                    playerTurn();
+                }else{
+                    playerImage.setImageResource(R.drawable.white1);
+                    aiImage.setImageResource(R.drawable.black1);
+                    aiTurn();
+                }
+                reversiView.initialChessBoard();
             }
         });
 

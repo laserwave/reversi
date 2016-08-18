@@ -2,7 +2,6 @@ package cn.zhikaizhang.widget;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -10,8 +9,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
-import cn.zhikaizhang.reversi.R;
 import cn.zhikaizhang.game.Constant;
+import cn.zhikaizhang.reversi.R;
 
 
 /**
@@ -24,22 +23,15 @@ public class NewGameDialog extends Dialog {
     private Button ok;
 
     public NewGameDialog(Context context) {
-
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        final SharedPreferences historyChoice = context.getSharedPreferences("historyChoice", Context.MODE_PRIVATE);
-        final boolean isBlack = historyChoice.getBoolean("role", true);
-        final int lastLevel = historyChoice.getInt("level", 0);
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.new_game_dialog, null);
 
         black = (RadioButton)view.findViewById(R.id.black);
         white = (RadioButton)view.findViewById(R.id.white);
-        if (isBlack)
-            black.setChecked(true);
-        else
-            white.setChecked(true);
+
+        black.setChecked(true);
 
         radioButtons[0] = (RadioButton)view.findViewById(R.id.level1);
         radioButtons[1] = (RadioButton)view.findViewById(R.id.level2);
@@ -64,7 +56,7 @@ public class NewGameDialog extends Dialog {
                 }
             });
         }
-        radioButtons[lastLevel].setChecked(true);
+        radioButtons[0].setChecked(true);
         ok = (Button)view.findViewById(R.id.ok);
         super.setContentView(view);
     }
