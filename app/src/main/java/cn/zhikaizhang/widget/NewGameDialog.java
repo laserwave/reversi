@@ -18,7 +18,7 @@ import cn.zhikaizhang.reversi.R;
  */
 public class NewGameDialog extends Dialog {
 
-    private RadioButton black, white;
+    private RadioButton black;
     private final RadioButton[] radioButtons = new RadioButton[8];
     private Button ok;
 
@@ -29,7 +29,6 @@ public class NewGameDialog extends Dialog {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.new_game_dialog, null);
 
         black = (RadioButton)view.findViewById(R.id.black);
-        white = (RadioButton)view.findViewById(R.id.white);
 
         black.setChecked(true);
 
