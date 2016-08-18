@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
-import cn.zhikaizhang.reversi.R;
 import cn.zhikaizhang.game.Constant;
+import cn.zhikaizhang.reversi.R;
 
 
 /**
@@ -23,14 +23,13 @@ public class NewGameDialog extends Dialog {
     private Button ok;
 
     public NewGameDialog(Context context) {
-
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.new_game_dialog, null);
 
         black = (RadioButton)view.findViewById(R.id.black);
+
         black.setChecked(true);
 
         radioButtons[0] = (RadioButton)view.findViewById(R.id.level1);

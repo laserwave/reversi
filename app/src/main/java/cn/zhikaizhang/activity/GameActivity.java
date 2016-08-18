@@ -18,15 +18,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import cn.zhikaizhang.game.Algorithm;
 import cn.zhikaizhang.bean.Move;
-import cn.zhikaizhang.game.Rule;
 import cn.zhikaizhang.bean.Statistic;
-import cn.zhikaizhang.reversi.R;
+import cn.zhikaizhang.game.Algorithm;
 import cn.zhikaizhang.game.Constant;
-import cn.zhikaizhang.widget.MessageDialog;
-import cn.zhikaizhang.widget.NewGameDialog;
 import cn.zhikaizhang.game.ReversiView;
+import cn.zhikaizhang.game.Rule;
+import cn.zhikaizhang.reversi.R;
+import cn.zhikaizhang.widget.MessageDialog;
 
 public class GameActivity extends Activity {
 
@@ -63,7 +62,6 @@ public class GameActivity extends Activity {
     private static final String MULTIPLY = " × ";
     private static final String NAME_OF_AI[] = new String[]{"菜鸟", "新手", "入门", "棋手", "棋士", "大师", "宗师", "棋圣"};
 
-    private NewGameDialog dialog;
     private MessageDialog msgDialog;
 
     @Override
@@ -148,31 +146,17 @@ public class GameActivity extends Activity {
         newGame.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new NewGameDialog(GameActivity.this);
-                dialog.setOnStartNewGameListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        playerColor = dialog.getPlayerColor();
-                        aiColor = (byte) -playerColor;
-                        difficulty = dialog.getDifficulty();
-
-                        nameOfAI.setText(NAME_OF_AI[difficulty - 1]);
-
-                        initialChessboard();
-                        if(playerColor == BLACK){
-                            playerImage.setImageResource(R.drawable.black1);
-                            aiImage.setImageResource(R.drawable.white1);
-                            playerTurn();
-                        }else{
-                            playerImage.setImageResource(R.drawable.white1);
-                            aiImage.setImageResource(R.drawable.black1);
-                            aiTurn();
-                        }
-                        reversiView.initialChessBoard();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
+                initialChessboard();
+                if(playerColor == BLACK){
+                    playerImage.setImageResource(R.drawable.black1);
+                    aiImage.setImageResource(R.drawable.white1);
+                    playerTurn();
+                }else{
+                    playerImage.setImageResource(R.drawable.white1);
+                    aiImage.setImageResource(R.drawable.black1);
+                    aiTurn();
+                }
+                reversiView.initialChessBoard();
             }
         });
 
@@ -222,7 +206,7 @@ public class GameActivity extends Activity {
 
         public void run() {
             try {
-                sleep(20 * 100);
+                sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
