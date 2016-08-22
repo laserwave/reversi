@@ -2,7 +2,9 @@ package cn.zhikaizhang.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -27,10 +29,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
+				SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+				byte playColor = (byte)preferences.getInt("playerColor", Constant.BLACK);
+				int difficulty = preferences.getInt("difficulty", 1);
+
 				Intent intent = new Intent(MainActivity.this, GameActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putByte("playerColor", Constant.BLACK);
-				bundle.putInt("difficulty", 1);
+				bundle.putByte("playerColor", playColor);
+				bundle.putInt("difficulty", difficulty);
 				intent.putExtras(bundle);
 				startActivity(intent);
 				overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);

@@ -19,10 +19,11 @@ import cn.zhikaizhang.game.Constant;
 public class NewGameDialog extends Dialog {
 
     private RadioButton black;
+    private RadioButton white;
     private final RadioButton[] radioButtons = new RadioButton[8];
     private Button ok;
 
-    public NewGameDialog(Context context) {
+    public NewGameDialog(Context context, byte playColor, int difficulty) {
 
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -31,7 +32,13 @@ public class NewGameDialog extends Dialog {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.new_game_dialog, null);
 
         black = (RadioButton)view.findViewById(R.id.black);
-        black.setChecked(true);
+        white = (RadioButton)view.findViewById(R.id.white);
+        if(playColor == Constant.BLACK){
+            black.setChecked(true);
+        }else{
+            white.setChecked(true);
+        }
+
 
         radioButtons[0] = (RadioButton)view.findViewById(R.id.level1);
         radioButtons[1] = (RadioButton)view.findViewById(R.id.level2);
@@ -56,7 +63,7 @@ public class NewGameDialog extends Dialog {
                 }
             });
         }
-        radioButtons[0].setChecked(true);
+        radioButtons[difficulty - 1].setChecked(true);
         ok = (Button)view.findViewById(R.id.ok);
         super.setContentView(view);
     }
